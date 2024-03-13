@@ -9,7 +9,7 @@ Concrètement, lorsque le pilote demande d'accélérer mais que les roues patine
 
 ## Choix de la communication : CAN BUS
 
-Pour réaliser une communication entre les différentes unités, nous avons décidé d'utiliser le bus de données CAN (Controller Area Network) qui s'appuie sur la méthode CSMA/CD.
+Pour réaliser une communication entre les différentes unités, nous avons décidé d'utiliser le protocole de bus de données CAN (Controller Area Network) qui s'appuie sur la méthode CSMA/CD.
 Pour plus d'informations voir le [lien de igm-univ](https://www-igm.univ-mlv.fr/~dr/XPOSE2009/BusCAN/index.html).
 
 Nous avons privilégié cette solution en raison de sa simplicité d'utilisation ainsi que sa large adoption dans le monde de l'automobile d'aujourd'hui.
@@ -18,8 +18,11 @@ Nous avons privilégié cette solution en raison de sa simplicité d'utilisation
 
 
 
-
-
 # Avancés
 
 # A Faire
+
+# Ressources
+
+## Vidéos
+[Automotive Embedded Systems](https://www.youtube.com/playlist?list=PLvRkgRDxp5cqQE50te4IAMqggg-AtKbkf)
