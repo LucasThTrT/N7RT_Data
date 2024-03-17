@@ -12,4 +12,4 @@ La mission de l'équipe se divise en 2 parties distinctes :
 Nous avons aussi réaliser le site de l'association
 
 Le Lien du git [ici](https://github.com/LucasThTrT/n7racing)\
-Le lien du site [n7racin.fr](n7racing.fr)
+Le lien du site [n7racin.fr](www.n7racing.fr)
