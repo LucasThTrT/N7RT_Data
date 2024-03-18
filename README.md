@@ -1,4 +1,4 @@
-# Pôle DATA - N7 Racing Team e
+# Pôle DATA - N7 Racing Team
 Ce repository contient l'ensemble du travail de ce pôle.
 
 
