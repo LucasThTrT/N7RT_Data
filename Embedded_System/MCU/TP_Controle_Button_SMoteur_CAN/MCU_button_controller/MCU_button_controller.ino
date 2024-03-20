@@ -47,7 +47,7 @@ void setup() {
   // Trame 2 = LED ROUGE 
   canMsg2.can_id  = 0x0F6;
   canMsg2.can_dlc = 8;
-  canMsg2.data[0] = 0xAA; // information utile pour le controle du moteur
+  canMsg2.data[0] = 0xA9; // information utile pour le controle du moteur
   canMsg1.data[1] = 0x87;
   canMsg1.data[2] = 0x32;
   canMsg1.data[3] = 0xFA;
@@ -102,6 +102,7 @@ void loop() {
     // Envoi de la trame CAN
     mcp2515.sendMessage(&canMsg1);
     Serial.println(":: VERT");
+
   }  else if (buttonLockVert == false) {
     // turn LED off:
     digitalWrite(ledPinVert, LOW);

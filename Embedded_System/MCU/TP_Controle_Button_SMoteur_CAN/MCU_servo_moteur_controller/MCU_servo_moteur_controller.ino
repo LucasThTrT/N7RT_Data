@@ -1,6 +1,12 @@
 // Problème occasionnel sur l'extême rouge il y a des blocages 
 // voir pourquoi ...
 
+// Alors..
+// J'ai réussi à régler le problème mais je ne sais pas pourquoi !
+// J'ai uniquement modifier la data de AA en A9 dans le contrôle pos ROUGE 
+
+
+
 #include <Servo.h>
 #include <SPI.h>
 #include <mcp2515.h>
@@ -66,10 +72,11 @@ void setup() {
 void loop() {
     // Réception des trames
     if (mcp2515.readMessage(&canMsg) == MCP2515::ERROR_OK) {
+        Serial.println("RR");
         // Si la trame reçue est la trame 1
         if (canMsg.data[0] == 0x00) {
             // Si la position est extrême = 0, on bloque le bouton vert
-             if (pos < 1){
+             if (pos <= 2){
                 // on envoie la trame 1 de blocage
                 mcp2515.sendMessage(&canMsg1);
                 Serial.println("Bouton vert bloqué");
@@ -82,9 +89,9 @@ void loop() {
              }
         }
         // Si la trame reçue est la trame 2
-        else if (canMsg.data[0] == 0xAA) {
+        if (canMsg.data[0] == 0xA9) { 
             // Si la position est extrême = 180, on bloque le bouton rouge
-             if (pos > 179){
+             if (pos >= 178){
                 // on envoie la trame 2 de blocage
                 mcp2515.sendMessage(&canMsg2);
                 Serial.println("Bouton rouge bloqué");
