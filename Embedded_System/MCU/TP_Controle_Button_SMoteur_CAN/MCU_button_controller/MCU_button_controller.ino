@@ -32,7 +32,7 @@ void setup() {
 
   // Initialisation des trames
 
-  // Trame 1 = LED VERT -> GAUCHE
+  // Trame 1 = LED VERT 
   canMsg1.can_id  = 0x0F6;
   canMsg1.can_dlc = 8;
   canMsg1.data[0] = 0x00; // information utile pour le controle du moteur
@@ -44,7 +44,7 @@ void setup() {
   canMsg1.data[6] = 0xBE;
   canMsg1.data[7] = 0x86;
 
-  // Trame 2 = LED ROUGE -> DROITE
+  // Trame 2 = LED ROUGE 
   canMsg2.can_id  = 0x0F6;
   canMsg2.can_dlc = 8;
   canMsg2.data[0] = 0xAA; // information utile pour le controle du moteur
@@ -91,18 +91,18 @@ void loop() {
   buttonStateVert = digitalRead(buttonPinVert);
 
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
-  if (buttonStateVert == HIGH and buttonLockVert == false) {
+  if (buttonStateVert == HIGH) {
     // turn LED on:
     digitalWrite(ledPinVert, HIGH);
-    Serial.println("HIGH");
+    //Serial.println("HIGH");
 
     // Position extrême Rouge Impossible
     buttonLockRouge = false;
 
     // Envoi de la trame CAN
     mcp2515.sendMessage(&canMsg1);
-    Serial.println("Controle moteur gauche");
-  } else {
+    Serial.println(":: VERT");
+  }  else if (buttonLockVert == false) {
     // turn LED off:
     digitalWrite(ledPinVert, LOW);
   }
@@ -112,19 +112,19 @@ void loop() {
   buttonStateRouge = digitalRead(buttonPinRouge);
 
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
-  if (buttonStateRouge == HIGH and buttonLockRouge == false) {
+  if (buttonStateRouge == HIGH ) {
     // turn LED on:
     digitalWrite(ledPinRouge, HIGH);
-    Serial.println("HIGH");
+    //Serial.println("HIGH");
 
     // Position extrême Vert Impossible
     buttonLockVert = false;
 
     // Envoi de la trame CAN
     mcp2515.sendMessage(&canMsg2);
-    Serial.println("Controle moteur droit");
+    Serial.println(":: ROUGE");
 
-  } else {
+  }  else if (buttonLockRouge == false){
     // turn LED off:
     digitalWrite(ledPinRouge, LOW);
   }
@@ -135,15 +135,26 @@ void loop() {
 
   if (mcp2515.readMessage(&canMsg) == MCP2515::ERROR_OK) {
     // l'information se trouve en data[3]
-    if (canMsg.data[3] == 0x00) {
+    if (canMsg.data[0] == 0x00) {
       digitalWrite(ledPinVert, HIGH);
       buttonLockVert = true;
-      Serial.println("Position extrême gauche");
+      Serial.println("Position extrême VERT");
 
-    } else if (canMsg.data[3] == 0xAA) {
+    } else if (canMsg.data[0] == 0xAA) {
       digitalWrite(ledPinRouge, HIGH);
       buttonLockRouge = true;
-      Serial.println("Position extrême droite");
+      Serial.println("Position extrême ROUGE");
     }
   }
+
+  if (buttonLockRouge == true) {
+    // Alume la led si bloqué
+    digitalWrite(ledPinRouge, HIGH);
+  } 
+  else if (buttonLockVert == true) {
+    // Alume la led si bloqué
+    digitalWrite(ledPinVert, HIGH);
+
+  }
+
 }
