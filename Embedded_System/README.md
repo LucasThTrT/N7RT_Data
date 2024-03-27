@@ -23,6 +23,7 @@ Nous avons privilégié cette solution en raison de sa simplicité d'utilisation
 # A Faire
 
 # Ressources
+- Matlab explications simulation CAN : https://fr.mathworks.com/solutions/automotive/electric-vehicle.html
 
 ## Vidéos
 
