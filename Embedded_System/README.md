@@ -25,4 +25,5 @@ Nous avons privilégié cette solution en raison de sa simplicité d'utilisation
 # Ressources
 
 ## Vidéos
-[Automotive Embedded Systems](https://www.youtube.com/playlist?list=PLvRkgRDxp5cqQE50te4IAMqggg-AtKbkf)
+
+- CAN/Autosar : [Automotive Embedded Systems](https://www.youtube.com/playlist?list=PLvRkgRDxp5cqQE50te4IAMqggg-AtKbkf)
